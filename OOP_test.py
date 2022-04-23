@@ -3,9 +3,9 @@ class Student:
         self.name = name
         self.surname = surname
         self.gender = gender
-        self.finished_courses = []  # пройденные курсы
-        self.courses_in_progress = []  # список курсов
-        self.grades = {}  # оценки
+        self.finished_courses = []
+        self.courses_in_progress = []
+        self.grades = {}
 
     def rate_hw(self, lector, course, grade):
         if isinstance(lector, Lecturer) and course in self.courses_in_progress and course in lector.courses_attached:
@@ -48,7 +48,7 @@ class Mentor:
     def __init__(self, name, surname):
         self.name = name
         self.surname = surname
-        self.courses_attached = []  # ведет курс
+        self.courses_attached = []
 
 
 class Lecturer(Mentor):
@@ -85,9 +85,9 @@ class Reviewer(Mentor):
     def rate_hw(self, student, course, grade):
         if isinstance(student, Student) and course in student.courses_in_progress:
             if course in student.grades:
-                student.grades[course] += [grade]  # если курс уже есть в списке оценок, добавляем оценку к курсу
+                student.grades[course] += [grade]
             else:
-                student.grades[course] = [grade]  # иначе добавляем в словать курс и оценку к нему
+                student.grades[course] = [grade]
         else:
             return 'Ошибка'
 
@@ -150,12 +150,12 @@ print(student_alyssa)
 print('-------------------------------------')
 print(student_colton)
 print()
-print('*****************  Лекторы   *******************')
+print('*****************  Lecturer  *******************')
 print(lecturer_bob)
 print('----------------------------------')
 print(lecturer_owen)
 print()
-print('****************  Ревьюверы   ****************')
+print('****************  Reviewer  ****************')
 print(reviewer_steven)
 print('-------------------------------------')
 print(reviewer_ralph)
